@@ -1,0 +1,33 @@
+# Created at 2022-08-11T10:17:35.055
+TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: null
+java.io.EOFException
+	at java.base/java.io.DataInputStream.readInt(DataInputStream.java:396)
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:391)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+
+# Created at 2022-08-11T10:17:35.699
+Unexpected IOException with stream: 2022-08-11 10:17:35.697  WARN 8012 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+
+
+# Created at 2022-08-11T10:17:35.958
+Unexpected IOException with stream: 2022-08-11 10:17:35.957  INFO 8012 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+
+
+# Created at 2022-08-11T10:17:36.436
+Unexpected IOException with stream: 2022-08-11 10:17:36.435  INFO 8012 --- [           main] com.webHook.WebHookApplicationTests      : Started WebHookApplicationTests in 5.319 seconds (JVM running for 6.356)
+
+
+# Created at 2022-08-11T10:17:36.474
+Unexpected IOException: 5,1,com.webHook.WebHookApplicationTests,contextLoads,null,null,null
+
+
+# Created at 2022-08-11T10:17:36.628
+Unexpected IOException: 6,1,com.webHook.WebHookApplicationTests,contextLoads,null,null,null
+
+
+# Created at 2022-08-11T10:17:36.630
+Unexpected IOException: 2,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,com.webHook.WebHookApplicationTests,null,null,null
+
+

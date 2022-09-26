@@ -1,0 +1,61 @@
+# Created at 2022-08-03T14:51:45.365
+TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: null
+java.io.EOFException
+	at java.base/java.io.DataInputStream.readInt(DataInputStream.java:396)
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:391)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+
+# Created at 2022-08-03T14:51:45.385
+Unexpected IOException with stream: 2022-08-03 14:51:45.384  INFO 12680 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.9.Final}
+
+
+# Created at 2022-08-03T14:51:45.604
+Unexpected IOException with stream: 2022-08-03 14:51:45.603  INFO 12680 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+
+
+# Created at 2022-08-03T14:51:45.821
+Unexpected IOException with stream: 2022-08-03 14:51:45.820  INFO 12680 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+
+
+# Created at 2022-08-03T14:51:46.172
+Unexpected IOException with stream: 2022-08-03 14:51:46.171  INFO 12680 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+
+
+# Created at 2022-08-03T14:51:46.210
+Unexpected IOException with stream: 2022-08-03 14:51:46.209  INFO 12680 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+
+
+# Created at 2022-08-03T14:51:47.595
+Unexpected IOException with stream: 2022-08-03 14:51:47.594  INFO 12680 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+
+
+# Created at 2022-08-03T14:51:47.603
+Unexpected IOException with stream: 2022-08-03 14:51:47.602  INFO 12680 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+
+
+# Created at 2022-08-03T14:51:48.406
+Unexpected IOException with stream: 2022-08-03 14:51:48.405  WARN 12680 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+
+
+# Created at 2022-08-03T14:51:48.634
+Unexpected IOException with stream: 2022-08-03 14:51:48.634  INFO 12680 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+
+
+# Created at 2022-08-03T14:51:48.992
+Unexpected IOException with stream: 2022-08-03 14:51:48.991  INFO 12680 --- [           main] com.webHook.WebHookApplicationTests      : Started WebHookApplicationTests in 5.731 seconds (JVM running for 6.959)
+
+
+# Created at 2022-08-03T14:51:49.013
+Unexpected IOException: 5,1,com.webHook.WebHookApplicationTests,contextLoads,null,null,null
+
+
+# Created at 2022-08-03T14:51:49.163
+Unexpected IOException: 6,1,com.webHook.WebHookApplicationTests,contextLoads,null,null,null
+
+
+# Created at 2022-08-03T14:51:49.166
+Unexpected IOException: 2,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,com.webHook.WebHookApplicationTests,null,null,null
+
+

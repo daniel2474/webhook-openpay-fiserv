@@ -1,0 +1,32 @@
+server:
+  port: 8443
+  ssl:
+    key-store: /etc/letsencrypt/live/openpay.clubalpha.com.mx/keystore.p12
+    key-store-password: 123456
+    keyStoreType: PKCS12
+    keyAlias: tomcat
+    key-password: 123456  
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  data:
+    jpa.repositories.enabled: true
+  datasource:
+    initialization-mode: always
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/conekta
+    username: conekta
+    password: WZ155YH%
+    continueOnError: true    
+my:
+  property:
+    data: jdbc:sqlserver://192.168.20.21;database=DataFlowAlpha
+    userData: sa
+    passData: dVf2SJZwMZ
+    usuarioCorreo: daniel.garcia@clubalpha.com.mx
+    contrasenaCorreo: farmacia123haloreach
+    copiaOculta2: ivan.najera@clubalpha.com.mx
+    url: https://openpay.clubalpha.com.mx/
+    urlSports: http://192.168.20.57:8090/
