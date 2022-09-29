@@ -1,11 +1,15 @@
 package com.webHook.Controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.webHook.Correo.Correo;
 import com.webHook.Correo.Html;
 import com.webHook.Entity.FiservRespuesta;
+import com.webHook.Entity.PagoDomiciliado;
+import com.webHook.Entity.Fiserv.PagoFiserv;
 import com.webHook.Service.ConfiguracionService;
 import com.webHook.Service.DatosUsuarioService;
 import com.webHook.Service.FiservRespuestaService;
+import com.webHook.Service.PagoDomiciliadoService;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
@@ -65,6 +69,9 @@ import org.springframework.web.bind.annotation.RestController;
 	 @Autowired
 	 FiservRespuestaService fiservRespuestaService;
 
+	 @Autowired
+	 PagoDomiciliadoService pagoDomiciliadoService;
+
 	  @Autowired
 	  ConfiguracionService confiService;
 	  
@@ -92,6 +99,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 		@Value("${my.property.urlSports}")
 		String urlSports;
+		
+		@Value("${my.property.urlPedido}")
+		String urlPedido;
 
 	 @PostMapping(value = "/registrarDatos", produces = MediaType.TEXT_HTML_VALUE)
 	 @ResponseBody
@@ -186,6 +196,7 @@ import org.springframework.web.bind.annotation.RestController;
 	          "<body>\n" + "<img src=\"https://img.freepik.com/vector-premium/mensaje-alerta-notificacion-movil-alertas-error-peligro-problema-virus-telefono-inteligente-o-notificaciones-problemas-mensajes-no-deseados-no-seguros-ilustracion_100456-1401.jpg\"> No se ha completado el pago\n"  + "</body>\n" + "</html>";
 		}
 	 } 
+	 
 	 @PostMapping(value = "/domiciliarCliente", produces = MediaType.TEXT_HTML_VALUE)
 	 @ResponseBody
 	public String domiciliarCliente(@RequestBody String body){
@@ -272,6 +283,7 @@ import org.springframework.web.bind.annotation.RestController;
 							 autorizacionSplit[1], oid);
 						logger.info("El correo se envio exitosamente: "+respuesta2.getString("EMail"));
 				 }catch(Exception e) {
+					 e.printStackTrace();
 					 logger.error("No se envio el correo por el siguiente error: "+e.getMessage());
 				 }
 				 Html html=new Html();
@@ -317,6 +329,31 @@ import org.springframework.web.bind.annotation.RestController;
 		 }
 		
 	 } 
+	 @PostMapping("/guardarDomiciliacion")
+	 @ResponseBody
+	public ResponseEntity<?> guardarDomiciliacion(@RequestBody PagoFiserv body){
+		 try {
+			 logger.info("Se aplicara el pago : "+body);
+		     String[] fe = TimeStampDate(body.transactionTime);
+		     ObjectMapper objectMapper = new ObjectMapper();
+		     String usuarioJson = objectMapper.writeValueAsString(body);
+		     PagoDomiciliado pagoDomiciliado=new PagoDomiciliado();
+		     pagoDomiciliado.setInformacion(usuarioJson);
+		     pagoDomiciliado=pagoDomiciliadoService.save(pagoDomiciliado);
+		     logger.info("Registro de pago guardado : "+pagoDomiciliado);
+			 //Token t = this.confiService.getById(1).get();
+			 if(body.transactionStatus.equals("APPROVED")) {
+				 this.sp(Long.parseLong(body.orderId),body.approvedAmount.total , body.processor.referenceNumber, body.ipgTransactionId, 
+						 body.approvalCode, fe[0], fe[1], "");
+					logger.info("Pago reflejado en dataflow : "+body);
+			 }
+	        return new ResponseEntity<>(body, HttpStatus.OK);
+		 }catch(Exception e ) {
+			 logger.error("El pago no se reflejo en dataflow : "+body);
+		        return new ResponseEntity<>("", HttpStatus.OK);
+		 }
+		
+	 } 
 	        
 	 private String[] TimeStampDate(long timestampString) {
         Long timestamp = Long.valueOf(timestampString * 1000L);
@@ -342,12 +379,12 @@ import org.springframework.web.bind.annotation.RestController;
 	           ps.setLong(4, noPedido);
 	           ps.setString(5, "");
 	           ps.setDouble(6, monto);
-	           ps.setInt(7, 20);
+	           ps.setInt(7, 20);// pago en linea
 	           ps.setString(8, noTarjeta);
 	           ps.setString(9, folioInterbancario);
 	           ps.setString(10, fechaPago+" "+horaPago);
 	           ps.setString(11, noAutorizacion);
-	           ps.setInt(12, 6);
+	           ps.setInt(12, 6); //pago en linea
 	           ps.setString(13, titularCuenta);
 	           ps.execute();
 	           

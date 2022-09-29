@@ -30,3 +30,4 @@ my:
     copiaOculta2: ivan.najera@clubalpha.com.mx
     url: https://openpay.clubalpha.com.mx/
     urlSports: http://192.168.20.57:8090/
+    urlPedido: http://192.168.20.26/

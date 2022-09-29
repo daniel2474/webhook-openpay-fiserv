@@ -228,7 +228,7 @@ public class Html {
 	}
 
 	public void setHtmlDomiciliado(String nombre,int idCliente, String noMembresia,String fechaPago,String horaPago,String importe,String noAutorizacion,String oid) {
-		this.htmlAprobado = "<html>\r\n"
+		this.htmlDomiciliado = "<html>\r\n"
 				+ "    <head>\r\n"
 				+ "        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\r\n"
 				+ "        <title>Pago en linea</title>\r\n"
@@ -326,7 +326,6 @@ public class Html {
 				+ "      					<h1>Importe pagado: "+importe+"</h1>\r\n"
 				+ "      					<h1>No. Autorización: "+noAutorizacion+"</h1>\r\n"
 				+ "      					<h1>Order Id:  "+oid+"</h1>\r\n"
-				+ "                          <h3> Para tu comodidad te invitamos a domiciliar tu pago, solicita informacion en atención a clientes de tu club </h3>\r\n"
 				+ "                          <h3 style=\"font-style: oblique; margin-bottom: 50px;\">¡Impulsando tu mejor versión a través del deporte!</h3>\r\n"
 				+ "                      </div>\r\n"
 				+ "                  </div>\r\n"
